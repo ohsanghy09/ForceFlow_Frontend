@@ -1,0 +1,863 @@
+:global(*) {
+  box-sizing: border-box;
+}
+
+:global(:root) {
+  --cream: #f9f9f3;
+  --ivory: #f7f7ed;
+  --orange: #ff7948;
+  --orange-shadow: #ffb881;
+
+  --green-dark: #3d5a47;
+  --green-title: #3c664a;
+  --green-nav: #566e5e;
+  --green-active: #3b5042;
+  --green-personnel: #566e5e;
+  --green-soft: #698b79;
+  --green-card: #537060;
+  --green-bottom: #b4d2c2;
+
+  --gray-text: #616763;
+
+  --font-main: "SF Pro", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Arial, sans-serif;
+}
+
+:global(html),
+:global(body),
+:global(#root) {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+:global(body) {
+  margin: 0;
+  background: #202020;
+}
+
+:global(button) {
+  font-family: inherit;
+}
+
+/* 전체 페이지 */
+.page {
+  width: 100%;
+  min-height: 100dvh;
+  background: #202020;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-x: hidden;
+}
+
+/* Figma 원본 기준 1440 : 1024 */
+/* 가로만 화면에 맞게 줄어들고, 세로는 1024px 기준으로 고정 */
+.dashboard {
+  position: relative;
+  width: 100vw;
+  max-width: none;
+  height: max(64rem, 71.111111vw);
+  background: var(--cream);
+  overflow: hidden;
+  font-family: var(--font-main);
+  color: var(--cream);
+}
+
+/* =========================
+   상단 헤더
+========================= */
+
+.hero {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 29.296875%;
+  background-image:
+    url("../../../assets/officer/officer_main/image-effect-bg.svg"),
+    url("../../../assets/officer/officer_main/image-bg.png");
+
+  background-size: cover, cover;
+  background-position: center, center 5%;
+  background-repeat: no-repeat, no-repeat;
+}
+
+.left-logo {
+  position: absolute;
+  left: 1.736%;
+  top: 8.333%;
+  width: 5.625%;
+  height: 33.333%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--cream);
+}
+
+.logo-emblem {
+  width: 75%;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(0.45rem, 1vw, 0.95rem);
+  font-weight: 900;
+  box-shadow: 0 0.22rem 0.25rem rgba(0, 0, 0, 0.25);
+}
+
+.logo-image {
+  width: 150%;
+  height: 150%;
+  object-fit: contain;
+  display: block;
+}
+
+.left-logo p {
+  margin: 0.42rem 0 0;
+  color: var(--cream);
+  font-size: clamp(0.3rem, 0.62vw, 0.58rem);
+  font-weight: 870;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.right-logo {
+  position: absolute;
+  right: 1.736%;
+  top: 8.333%;
+  width: 2.4%;
+  height: 16.667%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--cream);
+}
+
+
+/* 왼쪽 상단 문구 */
+.hero-title-area {
+  position: absolute;
+  left: 1.736%;
+  top: 0;
+  width: 46.5%;
+  height: 100%;
+}
+
+.hero-title-area p {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin: 0;
+  color: var(--green-bottom);
+  font-size: clamp(0.8rem, 1.736vw, 1.5625rem);
+  font-weight: 870;
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+}
+
+.hero-title-area h1 {
+  position: absolute;
+  left: 0;
+  top: 62.333%;
+  margin: 0;
+  color: var(--green-title);
+  font-size: clamp(1.5rem, 2.916vw, 2.625rem);
+  font-weight: 1000;
+  line-height: 1.14;
+  letter-spacing: -0.06em;
+  white-space: nowrap;
+}
+
+/* 인사 문구 + 옆 아이콘 */
+.hello-area {
+  position: absolute;
+  right: 1.736%;
+  top: 65.667%;
+  width: 15.5%;
+  height: 16.667%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5.5%;
+}
+
+.hello-area p {
+  margin: 0;
+  color: var(--cream);
+  font-size: clamp(0.7rem, 1.1vw, 1.0rem);
+  font-weight: 410;
+  white-space: nowrap;
+  text-align: right;
+  transform: translateY(0.8rem);
+}
+
+/* 사진 속 오른쪽 초록색 병사/사용자 아이콘 형태 */
+.hello-person-icon {
+  display: block;
+  width: clamp(1.4rem, 3.4vw, 3.125rem);
+  height: auto;
+  flex: 0 0 auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0.18rem 0.18rem rgba(0, 0, 0, 0.25));
+}
+
+/* 내비게이션 */
+.main-nav {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 16.667%;
+  display: grid;
+  grid-template-columns: 48.333% 13.889% 13.889% 13.889% 5.069% 4.931%;
+  border-top: 0.0625rem solid var(--green-dark);
+}
+
+.nav-empty {
+  border-right: 0.0625rem solid var(--green-dark);
+}
+
+.main-nav button {
+  border: 0;
+  border-right: 0.0625rem solid var(--green-dark);
+  background: transparent;
+  color: var(--green-nav);
+  font-size: clamp(0.5rem, 1.042vw, 0.9375rem);
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.nav-button {
+  border-left: 0.0625rem solid var(--green-dark);
+}
+
+.nav-button:active {
+  background: var(--green-active) !important;
+  color: #ffffff !important;
+}
+
+.nav-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-icon span {
+  display: block;
+  width: clamp(0.9rem, 1.85vw, 1.7rem);
+  aspect-ratio: 1;
+}
+
+.nav-alarm img {
+  display: block;
+  width: clamp(1rem, 2vw, 1.85rem);
+  height: auto;
+  object-fit: contain;
+}
+
+.nav-user img {
+  display: block;
+  width: clamp(1rem, 2vw, 1.85rem);
+  height: auto;
+  object-fit: contain;
+}
+
+/* =========================
+   비상 소집 영역
+========================= */
+
+.emergency-section {
+  position: absolute;
+  left: 0;
+  top: 29.296875%;
+  width: 100%;
+  height: 14.648438%;
+  display: grid;
+  grid-template-columns: 17.361% 82.639%;
+}
+
+.emergency-left {
+  position: relative;
+  background: var(--orange);
+}
+
+.plus-icon {
+  position: absolute;
+  left: 20%;
+  top: 31.7%;
+  width: 21.74%;
+  aspect-ratio: 1;
+}
+
+.plus-icon::before,
+.plus-icon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  background: var(--ivory);
+  border-radius: 99rem;
+}
+
+.plus-icon::before {
+  width: 100%;
+  height: 28%;
+}
+
+.plus-icon::after {
+  width: 28%;
+  height: 100%;
+}
+
+.siren-icon {
+  position: absolute;
+  left: 47.4%;
+  top: 22.7%;
+  width: 32.6%;
+  aspect-ratio: 1;
+  display: block;
+  object-fit: contain;
+}
+
+.emergency-right {
+  position: relative;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 121, 72, 0.2) 0%,
+      rgba(249, 249, 243, 0.2) 5%
+    ),
+    var(--cream);
+}
+
+.emergency-text {
+  position: absolute;
+  left: 4.2%;
+  top: 34%;
+  width: 64%;
+}
+
+.emergency-text h2 {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.emergency-main-text {
+  color: var(--gray-text);
+  font-size: clamp(0.72rem, 1.389vw, 1.25rem);
+  font-weight: 870;
+}
+
+.emergency-warning-text {
+  color: var(--orange);
+  font-size: clamp(0.72rem, 1.389vw, 1.25rem);
+  font-weight: 870;
+}
+
+.emergency-text p {
+  margin: 0.45rem 0 0;
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.emergency-main-sub {
+  color: var(--gray-text);
+  font-size: clamp(0.5rem, 1.042vw, 0.9375rem);
+  font-weight: 760;
+}
+
+.emergency-warning-sub {
+  color: var(--orange);
+  font-size: clamp(0.5rem, 1.042vw, 0.9375rem);
+  font-weight: 760;
+}
+
+.emergency-button {
+  position: absolute;
+  right: 2.02%;
+  top: 33.333%;
+  width: 16.8%;
+  height: 33.333%;
+  border: 0;
+  background: var(--orange);
+  color: var(--cream);
+  font-size: clamp(0.8rem, 1.736vw, 1.5625rem);
+  font-weight: 870;
+  box-shadow: 0 0.25rem 0.25rem var(--orange-shadow);
+  cursor: pointer;
+}
+
+/* =========================
+   기능 카드 영역
+========================= */
+
+.feature {
+  position: absolute;
+  color: var(--cream);
+}
+
+.feature-ai {
+  left: 0;
+  top: 43.945313%;
+  width: 50%;
+  height: 19.53125%;
+  background-image: url("../../../assets/officer/officer_main/ai-work-bg.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.feature-personnel {
+  left: 50%;
+  top: 43.945313%;
+  width: 50%;
+  height: 19.53125%;
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(86, 110, 94, 0.2) 5%
+    ),
+    url("../../../assets/officer/officer_main/personnel-check-bg.svg");
+
+  background-color: #566e5e;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.feature-schedule {
+  left: 0;
+  top: 63.476563%;
+  width: 50%;
+  height: 12.109375%;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(105, 139, 121, 0.2) 5%
+    ),
+    url("../../../assets/officer/officer_main/schedule-bg.svg");
+
+  background-color: #698b79;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.feature-dashboard {
+  left: 50%;
+  top: 63.476563%;
+  width: 50%;
+  height: 12.109375%;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(105, 139, 121, 0.2) 5%
+    ),
+    url("../../../assets/officer/officer_main/schedule-bg.svg");
+
+  background-color: #698b79;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.feature-icon {
+  position: absolute;
+  left: 11.667%;
+  width: 13.889%;
+  aspect-ratio: 1;
+  filter: drop-shadow(0 0.25rem 0.25rem rgba(0, 0, 0, 0.25));
+}
+
+.army-icon {
+  display: block;
+  object-fit: contain;
+}
+
+.main-log-icon {
+  display: block;
+  object-fit: contain;
+}
+
+.feature-ai .feature-icon,
+.feature-personnel .feature-icon {
+  top: 23.5%;
+}
+
+.feature-schedule .feature-icon,
+.feature-dashboard .feature-icon {
+  top: 15.3%;
+  width: 11.806%;
+}
+
+.feature-dashboard .feature-icon {
+  width: 13.889%;
+}
+
+.document-icon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--ivory);
+  clip-path: polygon(
+    12% 0%,
+    62% 0%,
+    88% 26%,
+    88% 100%,
+    12% 100%
+  );
+}
+
+.document-icon::after {
+  content: "✦";
+  position: absolute;
+  right: -12%;
+  top: 0%;
+  color: var(--ivory);
+  font-size: clamp(1.4rem, 3.5vw, 3.3rem);
+  font-weight: 900;
+}
+
+.personnel-icon::before {
+  content: "";
+  position: absolute;
+  left: 26%;
+  top: 5%;
+  width: 48%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--ivory);
+}
+
+.personnel-icon::after {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: 4%;
+  height: 48%;
+  background: var(--ivory);
+  clip-path: polygon(
+    50% 0%,
+    100% 38%,
+    100% 100%,
+    0% 100%,
+    0% 38%
+  );
+}
+
+.small-calendar-icon,
+.bottom-calendar-icon {
+  background:
+    linear-gradient(var(--ivory), var(--ivory)) 0 0 / 100% 24% no-repeat,
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 30%,
+      rgba(83, 112, 96, 0.92) 30% 33%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 31%,
+      rgba(83, 112, 96, 0.92) 31% 34%
+    ),
+    var(--ivory);
+  border-radius: 0.08rem;
+}
+
+.feature-text {
+  position: absolute;
+  left: 41.667%;
+}
+
+.feature-text-top {
+  top: 38.5%;
+}
+
+.feature-text-bottom {
+  top: 30.6%;
+}
+
+.feature-text h3 {
+  margin: 0;
+  color: var(--cream);
+  font-size: clamp(0.72rem, 1.389vw, 1.25rem);
+  font-weight: 870;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.feature-text p {
+  margin: 0.28rem 0 0;
+  color: var(--cream);
+  font-size: clamp(0.5rem, 1.042vw, 0.9375rem);
+  font-weight: 760;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.go-button {
+  position: absolute;
+  right: 3.333%;
+  width: 20.833%;
+  border: 0.125rem solid var(--cream);
+  background: transparent;
+  color: var(--cream);
+  font-size: clamp(0.82rem, 1.736vw, 1.5625rem);
+  font-weight: 870;
+  box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+.go-button-top {
+  top: 62.5%;
+  height: 25%;
+}
+
+.go-button-bottom {
+  top: 29.8%;
+  height: 40.3%;
+}
+
+/* =========================
+   하단 영역
+========================= */
+
+.bottom-section {
+  position: absolute;
+  left: 0;
+  top: 75.585938%;
+  width: 100%;
+  height: 24.414063%;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(105, 139, 121, 0.2) 5%
+    ),
+    url("../../../assets/officer/officer_main/check-realtime-bg.svg");
+
+  background-color: #698b79;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bottom-text {
+  position: absolute;
+  left: 1.736%;
+  top: 34.8%;
+  color: var(--cream);
+}
+
+.bottom-text h3 {
+  margin: 0;
+  width: 36.111%;
+  font-size: clamp(0.72rem, 1.389vw, 1.25rem);
+  font-weight: 870;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.bottom-text p {
+  margin: 0.28rem 0 0;
+  width: 25.139%;
+  font-size: clamp(0.72rem, 1.389vw, 1.25rem);
+  font-weight: 870;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.bottom-card {
+  position: absolute;
+  top: 10%;
+  width: 13.889%;
+  height: 80%;
+  border: 0;
+  border-radius: 0.3125rem;
+  background: var(--green-card);
+  color: var(--cream);
+  box-shadow: inset 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+.bottom-schedule {
+  left: 67.083%;
+}
+
+.bottom-personnel {
+  left: 84.444%;
+}
+
+.bottom-card-icon {
+  position: absolute;
+  left: 15%;
+  top: 25.5%;
+  width: 70%;
+  height: 37.5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5%;
+}
+
+.bottom-card-icon strong {
+  color: var(--cream);
+  font-size: clamp(1.9rem, 4.35vw, 4rem);
+  font-weight: 1000;
+  line-height: 1;
+}
+
+.bottom-main-icon {
+  display: block;
+  width: min(100%, 7.8125rem);
+  height: auto;
+  object-fit: contain;
+}
+
+.bottom-calendar-icon,
+.bottom-personnel-icon {
+  display: block;
+  width: clamp(2rem, 5.2vw, 4.6875rem);
+  aspect-ratio: 1;
+  position: relative;
+  filter: drop-shadow(0 0.25rem 0.25rem rgba(0, 0, 0, 0.25));
+}
+
+.bottom-personnel-icon::before {
+  content: "";
+  position: absolute;
+  left: 26%;
+  top: 5%;
+  width: 48%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--ivory);
+}
+
+.bottom-personnel-icon::after {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: 4%;
+  height: 48%;
+  background: var(--ivory);
+  clip-path: polygon(
+    50% 0%,
+    100% 38%,
+    100% 100%,
+    0% 100%,
+    0% 38%
+  );
+}
+
+.bottom-card p {
+  position: absolute;
+  left: 0;
+  bottom: 11%;
+  width: 100%;
+  margin: 0;
+  color: var(--cream);
+  text-align: center;
+  font-size: clamp(0.72rem, 1.389vw, 1.25rem);
+  font-weight: 870;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* =========================
+   반응형 보정
+   가로만 축소 / 세로 고정
+========================= */
+
+@media (max-width: 90rem) {
+  .page {
+    width: 100%;
+    min-height: 100dvh;
+    overflow-x: hidden;
+  }
+
+  .dashboard {
+    width: 100vw;
+    max-width: none;
+    height: max(64rem, 71.111111vw);
+  }
+}
+
+@media (max-width: 64rem) {
+  .page {
+    width: 100%;
+    min-height: 100dvh;
+    overflow-x: hidden;
+  }
+
+  .dashboard {
+    width: 100vw;
+    max-width: none;
+    height: max(64rem, 71.111111vw);
+  }
+}
+
+@media (max-width: 48rem) {
+  .page {
+    width: 100%;
+    min-height: 100dvh;
+    overflow-x: hidden;
+  }
+
+  .dashboard {
+    width: 100vw;
+    max-width: none;
+    height: max(64rem, 71.111111vw);
+  }
+}
+
+@media (max-width: 36rem) {
+  .page {
+    width: 100%;
+    min-height: 100dvh;
+    overflow-x: hidden;
+  }
+
+  .dashboard {
+    width: 100vw;
+    max-width: none;
+    height: max(64rem, 71.111111vw);
+  }
+}
+
+.mobile-page-button {
+  position: absolute;
+  left: 2rem;
+  bottom: 2rem;
+  z-index: 20;
+
+  padding: 0.9rem 1.4rem;
+  border: 0.12rem solid var(--cream);
+  border-radius: 0.4rem;
+
+  background: var(--orange);
+  color: var(--cream);
+
+  font-size: 1rem;
+  font-weight: 870;
+
+  cursor: pointer;
+  box-shadow: 0 0.25rem 0.35rem rgba(0, 0, 0, 0.35);
+}
+
+.mobile-page-button:hover {
+  background: #e8663c;
+}

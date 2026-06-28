@@ -1,0 +1,32 @@
+.container, .container * { box-sizing: border-box; }
+.container { width: 100%; min-height: 100dvh; display: flex; justify-content: center; align-items: flex-start; background: #f9f9f3; font-family: "SF Pro", Inter, Pretendard, sans-serif; }
+.phoneScreen { position: relative; flex: 0 0 402px; width: 402px; height: 812px; overflow: hidden; color: #f7f7ed; background: #000; }
+.header { position: relative; width: 402px; height: 100px; overflow: hidden; background: #566e5e; }
+.header > img { display: block; width: 402px; height: 100px; object-fit: cover; }
+.header button { position: absolute; top: 15px; z-index: 2; height: 70px; padding: 0; border: 0; background: transparent; }
+.headerBackButton { left: 0; width: 48px; }
+.headerNoticeButton { right: 20px; width: 62px; }
+.main { width: 402px; height: 620px; background: #b4d2c2; }
+.dateSection { width: 402px; height: 172px; }
+.dateRow { position: relative; width: 402px; height: 86px; padding: 10px 25px; display: grid; grid-template-columns: 125px 1fr 1fr; gap: 10px; align-items: center; overflow: hidden; background: #566e5e; }
+.background { position: absolute; inset: 0; z-index: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
+.dateRow > :not(.background), .stateInner, .actionSection button { position: relative; z-index: 1; }
+.labelBox { width: 125px; height: 58px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #f9f9f3; text-align: center; }
+.labelBox strong { height: 29px; font-size: 20px; font-weight: 870; line-height: 29px; }
+.labelBox span { height: 15px; font-size: 15px; font-weight: 760; line-height: 15px; }
+.selectBox { position: relative; width: 100%; height: 50px; outline: 2px solid #f7f7ed; outline-offset: -2px; box-shadow: 0 4px 4px rgba(0,0,0,.25); }
+.selectBox::after { content: ""; position: absolute; right: 13px; top: 50%; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 10px solid #f7f7ed; transform: translateY(-35%); pointer-events: none; }
+.select { width: 100%; height: 100%; padding: 0 35px 0 12px; appearance: none; border: 0; outline: 0; color: #f7f7ed; background: transparent; font-size: 20px; font-weight: 870; text-align: center; text-align-last: center; }
+.select option { color: #3d5a47; background: #f9f9f3; }
+.stateSection { position: relative; width: 402px; height: 379px; padding: 10px 25px; display: flex; justify-content: center; align-items: center; overflow: hidden; background: #3d5a47; }
+.stateInner { width: 352px; display: grid; grid-template-columns: 125px 217px; gap: 10px; align-items: center; }
+.actionSection { position: relative; width: 402px; height: 69px; padding: 10px 25px; display: flex; justify-content: center; align-items: center; gap: 50px; overflow: hidden; background: #566e5e; }
+.actionSection button { width: 150px; height: 50px; display: flex; justify-content: center; align-items: center; border: 0; outline: 2px solid #f9f9f3; outline-offset: -2px; color: #f9f9f3; background: transparent; box-shadow: 0 4px 4px rgba(0,0,0,.4); font-size: 25px; font-weight: 870; }
+.bottomNav { position: absolute; left: 0; top: 720px; z-index: 2; width: 402px; height: 92px; padding: 0 5px; display: flex; justify-content: center; align-items: center; gap: 17px; background: #2f3732; }
+.bottomNav button { width: 74px; height: 58px; padding: 0; display: flex; justify-content: center; align-items: center; border: 0; background: transparent; }
+.bottomNav img { display: block; width: 57px; height: 72px; object-fit: contain; filter: drop-shadow(0 3px 2px rgba(0,0,0,.32)); }
+.bottomNav .activeNavButton img { filter: drop-shadow(0 3px 2px rgba(0,0,0,.32)) brightness(1.4); }
+@media (max-width: 402px) {
+  .phoneScreen { transform-origin: top center; transform: scale(calc(100vw / 402)); }
+  .container { height: calc(812px * (100vw / 402)); min-height: 0; overflow: hidden; background: #000; }
+}

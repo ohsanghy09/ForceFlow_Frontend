@@ -1,0 +1,393 @@
+.container,
+.container * {
+  box-sizing: border-box;
+}
+
+.container {
+  --line-color: #566e5e;
+  --header-line-color: #2f3e34;
+  --rank-line-color: rgba(249, 249, 243, 0.32);
+
+  width: 100%;
+  height: 100vh;
+  background-color: #f9f9f3;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+  font-family: 'SF Pro', 'Pretendard', 'Noto Sans KR', sans-serif;
+}
+
+.header {
+  width: 100%;
+  height: 150px;
+  min-height: 150px;
+
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(86, 110, 94, 0.2) 5%),
+    #566e5e;
+
+  display: grid;
+  grid-template-columns: 120px 1fr 120px;
+  align-items: center;
+
+  padding: 0 25px;
+  flex-shrink: 0;
+}
+
+.backButton {
+  width: 60px;
+  height: 60px;
+
+  background: transparent;
+  border: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+  padding: 0;
+}
+
+.backIcon {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.titleBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+
+  color: #f9f9f3;
+  font-size: 42px;
+  font-weight: 870;
+  line-height: 1.12;
+
+  white-space: nowrap;
+}
+
+.subTitle {
+  margin: 8px 0 0;
+
+  color: #f9f9f3;
+  font-size: 20px;
+  font-weight: 760;
+  line-height: 1.2;
+
+  white-space: nowrap;
+}
+
+.headerIconBox {
+  width: 90px;
+  height: 90px;
+
+  justify-self: end;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.headerIcon {
+  width: 88px;
+  height: 88px;
+  object-fit: contain;
+}
+
+.content {
+  width: 100%;
+  min-height: 0;
+  flex: 1;
+
+  background-color: #f9f9f3;
+  overflow: hidden;
+}
+
+.tableHorizontalArea {
+  width: 100%;
+  height: 100%;
+
+  background-color: #f9f9f3;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.tableHorizontalArea::-webkit-scrollbar {
+  height: 10px;
+}
+
+.tableHorizontalArea::-webkit-scrollbar-track {
+  background-color: #f9f9f3;
+}
+
+.tableHorizontalArea::-webkit-scrollbar-thumb {
+  background-color: #566e5e;
+  border: 2px solid #f9f9f3;
+  border-radius: 999px;
+}
+
+.tableVerticalArea {
+  width: 100%;
+  min-width: 900px;
+  height: 100%;
+
+  background-color: #f9f9f3;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+  scrollbar-color: #566e5e #f9f9f3;
+}
+
+.tableVerticalArea::-webkit-scrollbar {
+  width: 10px;
+}
+
+.tableVerticalArea::-webkit-scrollbar-track {
+  background-color: #f9f9f3;
+}
+
+.tableVerticalArea::-webkit-scrollbar-thumb {
+  background-color: #566e5e;
+  border: 2px solid #f9f9f3;
+  border-radius: 999px;
+}
+
+.table {
+  --table-columns: repeat(6, minmax(90px, 1fr));
+
+  width: 100%;
+  min-width: 900px;
+}
+
+.tableHeaderGrid {
+  width: 100%;
+  height: 72px;
+  min-height: 72px;
+
+  display: grid;
+  grid-template-columns: var(--table-columns);
+
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.tableHeaderCell {
+  height: 72px;
+
+  background-color: #3d5a47;
+  border-right: 1px solid var(--header-line-color);
+  border-bottom: 1px solid var(--header-line-color);
+
+  color: #f9f9f3;
+  font-size: 40px;
+  font-weight: 870;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  white-space: nowrap;
+}
+
+.tableHeaderCell:first-child {
+  border-left: 1px solid var(--header-line-color);
+}
+
+.tableRowGrid {
+  width: 100%;
+  height: 72px;
+  min-height: 72px;
+
+  display: grid;
+  grid-template-columns: var(--table-columns);
+}
+
+.tableCell {
+  height: 72px;
+
+  border-right: 1px solid var(--line-color);
+  border-bottom: 1px solid var(--line-color);
+
+  color: #3d5a47;
+  font-size: 27px;
+  font-weight: 650;
+  line-height: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0 8px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.tableCell:first-child {
+  border-left: 1px solid var(--line-color);
+}
+
+.tableMessage {
+  width: 100%;
+  min-height: 72px;
+
+  border-right: 1px solid var(--line-color);
+  border-bottom: 1px solid var(--line-color);
+  border-left: 1px solid var(--line-color);
+
+  color: #3d5a47;
+  font-size: 27px;
+  font-weight: 650;
+  line-height: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rankCell {
+  height: 72px;
+
+  border-right: 1px solid var(--line-color);
+  border-bottom: 1px solid var(--line-color);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rankBadge {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+}
+
+.rankIconBox {
+  width: 96px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+.rankIcon {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+  object-fit: contain;
+}
+
+.rankNormalIcon {
+  transform: scale(1);
+  transform-origin: center;
+}
+
+.rankSgtIcon {
+  transform: scale(1.25);
+  transform-origin: center;
+}
+
+.rankSgt {
+  background-color: #3d5a47;
+}
+
+.rankCpl {
+  background-color: #566e5e;
+}
+
+.rankPfc {
+  background-color: #698b79;
+}
+
+.rankPvt {
+  background-color: #b4d2c2;
+}
+
+.rankTextLight {
+  min-width: 54px;
+
+  color: #f9f9f3;
+  font-size: 27px;
+  font-weight: 650;
+  line-height: 1;
+
+  text-align: center;
+  white-space: nowrap;
+}
+
+.rankTextDark {
+  min-width: 54px;
+
+  color: #3d5a47;
+  font-size: 27px;
+  font-weight: 650;
+  line-height: 1;
+
+  text-align: center;
+  white-space: nowrap;
+}
+
+.defaultRow {
+  background-color: #f9f9f3;
+}
+
+.trainingRow {
+  background-color: #3d5a47;
+}
+
+.trainingRow .tableCell {
+  color: #f9f9f3;
+  border-right-color: #334739;
+  border-bottom-color: #334739;
+}
+
+.trainingRow .tableCell:first-child {
+  border-left-color: #334739;
+}
+
+.trainingRow .rankCell {
+  border-right-color: #334739;
+  border-bottom-color: #334739;
+}
+
+.stayOutRow {
+  background-color: #ffc779;
+}
+
+.goOutRow {
+  background-color: #ff7948;
+}
+
+.vacationRow {
+  background-color: #e9e9e9;
+}
+
+@media (max-width: 900px) {
+  .tableVerticalArea {
+    width: 900px;
+    min-width: 900px;
+  }
+}
