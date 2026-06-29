@@ -1,5 +1,5 @@
 .container, .container * { box-sizing: border-box; }
-.container { width: 100%; min-height: 100dvh; display: flex; justify-content: center; align-items: flex-start; background: #f9f9f3; font-family: "SF Pro", Inter, Pretendard, sans-serif; }
+.container { width: 100%; min-height: 100dvh; display: flex; justify-content: center; align-items: flex-start; background: #000; font-family: "SF Pro", Inter, Pretendard, sans-serif; }
 .phoneScreen { position: relative; flex: 0 0 402px; width: 402px; height: 812px; overflow: hidden; color: #f7f7ed; background: #000; }
 .header { position: relative; width: 402px; height: 100px; overflow: hidden; background: #566e5e; }
 .header > img { display: block; width: 402px; height: 100px; object-fit: cover; }
