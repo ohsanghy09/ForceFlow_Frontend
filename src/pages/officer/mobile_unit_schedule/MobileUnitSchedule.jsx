@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./MobileUnitSchedule.module.css";
 
@@ -29,7 +29,38 @@ function SelectBox({ value, onChange, options, label }) {
 export default function MobileUnitSchedule() {
   const navigate = useNavigate();
   const [form, setForm] = useState({ startMonth: "월", startDay: "일", endMonth: "월", endDay: "일", state: "상황" });
+  const [toastMessage, setToastMessage] = useState("");
+  const toastTimerRef = useRef(null);
   const update = (key) => (event) => setForm((current) => ({ ...current, [key]: event.target.value }));
+
+  useEffect(() => () => {
+    if (toastTimerRef.current) {
+      clearTimeout(toastTimerRef.current);
+    }
+  }, []);
+
+  const showToast = (message) => {
+    if (toastTimerRef.current) {
+      clearTimeout(toastTimerRef.current);
+    }
+
+    setToastMessage(message);
+    toastTimerRef.current = setTimeout(() => {
+      setToastMessage("");
+      toastTimerRef.current = null;
+    }, 2000);
+  };
+
+  const handleSave = () => {
+    const hasSelectedAll =
+      form.startMonth !== "월" &&
+      form.startDay !== "일" &&
+      form.endMonth !== "월" &&
+      form.endDay !== "일" &&
+      form.state !== "상황";
+
+    showToast(hasSelectedAll ? "저장되었습니다." : "데이터를 선택해주세요");
+  };
 
   return (
     <div className={styles.container}>
@@ -66,10 +97,16 @@ export default function MobileUnitSchedule() {
 
           <section className={styles.actionSection}>
             <img src={actionAreaImage} alt="" className={styles.background} />
-            <button type="button">제출</button>
+            <button type="button" onClick={handleSave}>제출</button>
             <button type="button" onClick={() => navigate("/soldier/mobile/main")}>취소</button>
           </section>
         </main>
+
+        {toastMessage && (
+          <div className={styles.toast} role="status" aria-live="polite">
+            {toastMessage}
+          </div>
+        )}
 
         <nav className={styles.bottomNav} aria-label="하단 메뉴">
           <button type="button" onClick={() => navigate("/soldier/mobile/main")}><img src={homeBottomIcon} alt="Home" /></button>
