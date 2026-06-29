@@ -251,9 +251,6 @@ function OfficerMain() {
             <p>소대 병력 조회</p>
           </button>
         </section>
-        <button type="button" onClick={() => navigate("/soldier/mobile/main")} className={styles["mobile-page-button"]}>
-          모바일 페이지로 이동하기
-        </button>
       </div>
     </div>
   );

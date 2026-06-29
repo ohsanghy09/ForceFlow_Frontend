@@ -838,26 +838,3 @@
   }
 }
 
-.mobile-page-button {
-  position: absolute;
-  left: 2rem;
-  bottom: 2rem;
-  z-index: 20;
-
-  padding: 0.9rem 1.4rem;
-  border: 0.12rem solid var(--cream);
-  border-radius: 0.4rem;
-
-  background: var(--orange);
-  color: var(--cream);
-
-  font-size: 1rem;
-  font-weight: 870;
-
-  cursor: pointer;
-  box-shadow: 0 0.25rem 0.35rem rgba(0, 0, 0, 0.35);
-}
-
-.mobile-page-button:hover {
-  background: #e8663c;
-}
