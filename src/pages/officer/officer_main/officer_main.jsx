@@ -53,7 +53,7 @@ function OfficerMain() {
 
           {/* 인사 문구 + 우측 아이콘 */}
           <div className={styles["hello-area"]}>
-            <p>안녕하세요 엄재홍 예비역 소령님</p>
+            <p>안녕하세요 임채훈 예비역 소령님</p>
             <img
               src={ganbuIcon}
               alt=""
@@ -220,7 +220,7 @@ function OfficerMain() {
         <section className={styles["bottom-section"]}>
           <div className={styles["bottom-text"]}>
             <h3>Check The Real-Time 1st Platoon Troops</h3>
-            <p>000 소대장님 실시간 1소대 병력 확인</p>
+            <p>임채훈 예비역 소령님 실시간 병력 확인</p>
           </div>
 
           <button
