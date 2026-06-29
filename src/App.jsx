@@ -9,10 +9,25 @@ import DutyCheck from "./pages/soldier/mobile/duty_check/duty_check";
 import MobileMain from "./pages/soldier/mobile/main/main";
 import MobileState from "./pages/soldier/mobile/state/state";
 
+function isPwaDisplayMode() {
+  return (
+    window.matchMedia("(display-mode: standalone)").matches ||
+    window.navigator.standalone === true
+  );
+}
+
+function RootRedirect() {
+  const targetPath = isPwaDisplayMode()
+    ? "/soldier/mobile/main"
+    : "/officer/main";
+
+  return <Navigate to={targetPath} replace />;
+}
+
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/officer/main" replace />} />
+      <Route path="/" element={<RootRedirect />} />
       <Route path="/officer/main" element={<OfficerMain />} />
       <Route path="/officer/dashboard" element={<OfficerDashboard />} />
       <Route

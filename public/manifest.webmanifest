@@ -1,8 +1,8 @@
 {
   "name": "ForceFlow",
   "short_name": "ForceFlow",
-  "description": "ForceFlow officer desktop PWA",
-  "start_url": "/officer/main",
+  "description": "ForceFlow PWA",
+  "start_url": "/soldier/mobile/main",
   "scope": "/",
   "display": "standalone",
   "orientation": "any",

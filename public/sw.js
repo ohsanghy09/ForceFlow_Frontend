@@ -1,7 +1,8 @@
-const CACHE_NAME = "forceflow-pwa-v2";
+const CACHE_NAME = "forceflow-pwa-v3";
 const APP_SHELL = [
   "/",
   "/officer/main",
+  "/soldier/mobile/main",
   "/manifest.webmanifest",
   "/icons/web-logo.svg",
   "/icons/web-logo-192.png",
@@ -39,10 +40,20 @@ self.addEventListener("fetch", (event) => {
       fetch(request)
         .then((response) => {
           const clone = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put("/officer/main", clone));
+          caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
           return response;
         })
-        .catch(() => caches.match("/officer/main").then((cached) => cached || caches.match("/")))
+        .catch(() =>
+          caches
+            .match(request)
+            .then(
+              (cached) =>
+                cached ||
+                caches.match("/soldier/mobile/main") ||
+                caches.match("/officer/main") ||
+                caches.match("/")
+            )
+        )
     );
     return;
   }
