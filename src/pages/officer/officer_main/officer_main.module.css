@@ -175,15 +175,16 @@
   position: absolute;
   right: 1.736%;
   top: 65.667%;
-  width: 15.5%;
+  width: 28%;
   height: 16.667%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 5.5%;
+  gap: 3.5%;
 }
 
 .hello-area p {
+  min-width: 0;
   margin: 0;
   color: var(--cream);
   font-size: clamp(0.7rem, 1.1vw, 1.0rem);

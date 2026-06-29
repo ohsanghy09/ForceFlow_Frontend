@@ -53,7 +53,7 @@ function OfficerMain() {
 
           {/* 인사 문구 + 우측 아이콘 */}
           <div className={styles["hello-area"]}>
-            <p>안녕하세요 000소대장님</p>
+            <p>안녕하세요 엄재홍 예비역 소령님</p>
             <img
               src={ganbuIcon}
               alt=""
