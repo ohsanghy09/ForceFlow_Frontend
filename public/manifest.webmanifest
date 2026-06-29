@@ -1,0 +1,19 @@
+{
+  "name": "ForceFlow",
+  "short_name": "ForceFlow",
+  "description": "ForceFlow officer desktop PWA",
+  "start_url": "/officer/main",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f9f9f3",
+  "theme_color": "#3d5a47",
+  "icons": [
+    {
+      "src": "/icons/web-logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
