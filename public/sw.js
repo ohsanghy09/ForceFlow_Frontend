@@ -1,5 +1,12 @@
-const CACHE_NAME = "forceflow-pwa-v1";
-const APP_SHELL = ["/", "/officer/main", "/manifest.webmanifest", "/icons/pwa-icon.svg"];
+const CACHE_NAME = "forceflow-pwa-v2";
+const APP_SHELL = [
+  "/",
+  "/officer/main",
+  "/manifest.webmanifest",
+  "/icons/web-logo.svg",
+  "/icons/web-logo-192.png",
+  "/icons/web-logo-512.png",
+];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
